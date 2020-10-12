@@ -3,8 +3,6 @@ FROM openjdk:11
 ENV PLAY_VERSION "1.5.3"
 ENV PLAY_HOME /opt/play
 
-ENV PORT "9000"
-
 # Play Framework installation
 RUN cd /opt && \
 	# Download play framework
@@ -24,5 +22,5 @@ EXPOSE 9000
 HEALTHCHECK --interval=30s --timeout=3s \
 	CMD curl --fail http://localhost:9000/ || exit 1
 
-CMD ${PLAY_HOME}/play run /app ${DEPS} "--http.port=${PORT}" ${ID} 
+CMD ${PLAY_HOME}/play run /app ${ARGS}
 
