@@ -22,5 +22,5 @@ EXPOSE 9000
 HEALTHCHECK --interval=30s --timeout=3s \
 	CMD curl --fail http://localhost:9000/ || exit 1
 
-CMD ${PLAY_HOME}/play run /app ${ARGS}
+CMD ${PLAY_HOME}/play deps; ${PLAY_HOME}/play run /app ${ARGS}
 
